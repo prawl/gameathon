@@ -12,4 +12,6 @@ This is a site for the SB 24-Hour Gameathon
 `npm run build`
 
 # Deployment
-TODO: fill out
+* Build the app. This will update everything in the `dist` folder. `npm run build`
+* Commit all of your changes, INCLUDING the `dist` folder. 
+* Run: `git subtree push --prefix dist origin gh-pages`
