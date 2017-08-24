@@ -1,0 +1,273 @@
+@import "~normalize.css/normalize.css";
+
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+/************ BRAND GUIDELINE COLORS ***************/
+$primary-pink: #eb1767;
+$secondary-pink: #cf0f5b;
+$secondary-pink-2: #a72056;
+
+$grey-lightest: #e6e7e8;
+$grey-light: #c6c8ca;
+$grey-medium: #a7a9ab;
+$grey-dark: #4c4c4e;
+$grey-darker: #404041;
+$grey-darkest: #292627;
+
+/************ OTHER COLORS ***************/
+$white: #ffffff;
+$green: #20cc2e;
+$blue: #45c7e4;
+$blue-alt: #1a7ed4;
+$purple: #9500ff;
+
+@mixin button-color($color) {
+  background-color: $color;
+  border-bottom: 10px solid darken($color, 10%);
+  
+  &:hover {
+    background-color: darken($color, 10%);
+  }
+}
+
+@mixin button($color) {
+  appearance: none;
+  text-decoration: none;
+  font-size: 1.2em;
+  padding: 1em;
+  display: block;
+  border: none;
+  color: #fff;
+  margin-bottom: 1em;
+  transition: 50ms all ease-in-out;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: 'Press Start 2P', sans-serif;
+  width: 100%;
+
+  @include button-color($color);
+}
+
+@mixin container() {
+  text-align: center;
+  padding: 1em;
+}
+
+@mixin container-header($color) {
+  header {
+    margin-top: -1em;
+    padding-top: 0;
+
+    h2 {
+      display: inline-block;
+      background-color: darken($color, 10%);
+      padding: 1em 2em;
+      margin-top: 0;
+      border: none;
+      border-bottom: 5px solid darken($color, 20%);
+    }
+  }
+}
+
+body {
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  background-color: $blue;
+  color: $white;
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.btn {
+  @include button($color: $grey-darker);
+  
+  &--green {
+    @include button-color($green);    
+  }
+  
+  &--pink {
+    @include button-color($primary-pink);
+  }
+  
+  &--blue {
+    @include button-color($blue-alt);
+  }
+}
+
+header {
+  @include container();
+  position: relative;
+  
+  h1 {
+    margin: 5em 0;
+  }
+  
+  nav {
+    @media screen and (min-width: 768px) {
+      .btn {
+        display: inline-block;
+        width: auto;
+        font-size: 2em;
+      }
+      .hide {
+        display: none;
+      }
+    }
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  
+  section {
+    flex: 1;
+  }
+  
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    
+    section {
+      max-width: 500px;
+      border: 10px solid #ddd;
+      margin: 1em;
+      margin-bottom: 4em;
+      box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.25);
+    }
+  }
+}
+
+section {
+  @include container();
+}
+
+footer {
+  @include container();
+  background-color: $grey-darkest;
+  padding-top: 3em;
+  padding-bottom: 0;
+  
+  a {
+    display: block;
+    text-align: center;
+  }
+  
+  .logo {
+    width: 200px;
+    height: 200px;
+    padding: 2em;
+    background-color: $primary-pink;
+    margin: 0 auto;
+    border: 10px solid darken($primary-pink, 10%);
+  }
+}
+
+.game-of-homes {
+  fill: currentColor;
+  margin: 10vH auto;
+  width: 100%;
+  transition: 200ms all ease-in-out;
+  
+  @media screen and (min-width: 768px) {
+    margin: 20vH auto;
+    width: 700px;
+  }
+}
+
+.game-of-homes svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  color: $white;
+}
+
+.logo svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+input[type="email"] {
+  font-size: 2em;
+  width: 100%;
+  display: block;
+  background-color: $white;
+  border: 5px solid $grey-dark;
+  margin-bottom: 1em;
+  font-family: monospace;
+  line-height: 2;
+  appearance: none;
+  
+  &:focus {
+    outline: none;
+    border-color: red;
+  }
+}
+
+table {
+  background-color: $grey-lightest;
+  border: 5px solid $grey-light;
+  color: $grey-darkest;
+  border-spacing: 5px;
+  display: block;
+  width: 100%;
+  
+  tbody, thead {
+    width: 100%;
+  }
+  
+  td {
+    background-color: $grey-light;
+    padding: 0.5em;
+  }
+  
+  td[colspan="2"] {
+    background-color: $grey-dark;
+    color: $white;
+  }
+}
+
+.section {
+  background-color: $grey-darkest;
+  
+  p {
+    line-height: 1.5;
+  }
+}
+
+#details {
+  background-color: $primary-pink;
+  border-color: darken($primary-pink, 10%);
+  @include container-header($primary-pink);
+}
+
+#schedule {
+  background-color: $grey-light;
+  border-color: darken($grey-light, 10%);
+  @include container-header($grey-light);
+}
+#sign-up {
+  background-color: $purple;
+  border-color: darken($purple, 10%);
+  @include container-header($purple);
+}
+
+#about {
+  background-color: $secondary-pink;
+  border-color: darken($secondary-pink, 10%);
+  @include container-header($secondary-pink);
+}
+
+.justify {
+  text-align: justify;
+}
